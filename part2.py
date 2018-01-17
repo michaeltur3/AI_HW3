@@ -1,8 +1,11 @@
-from sklearn.metrics import accuracy_score
-from sklearn.neighbors import KNeighborsClassifier
-from sklearn.model_selection import train_test_split
 import numpy as np
+from sklearn import tree
+from sklearn.metrics import accuracy_score
+from sklearn.model_selection import train_test_split
+from sklearn.neighbors import KNeighborsClassifier
+
 from sfs import sfs
+
 
 def getFeatureSubset(lst, V):
     res = []
@@ -50,4 +53,17 @@ y_predict = classifier.predict(X_test_subset)
 score = accuracy_score(y_test, y_predict)
 print(score)
 
+X_train, X_test, y_train, y_test = train_test_split(X, Y, test_size=0.25, random_state=0)
+classifier = tree.DecisionTreeClassifier(criterion="entropy")
+classifier = classifier.fit(X_train, y_train)
+y_predict = classifier.predict(X_test)
+score = accuracy_score(y_test, y_predict)
+print(score)
 
+classifier = tree.DecisionTreeClassifier(criterion="entropy", min_samples_split=20)
+classifier = classifier.fit(X_train, y_train)
+y_predict = classifier.predict(X_test)
+score = accuracy_score(y_test, y_predict)
+print(score)
+
+flare.close()

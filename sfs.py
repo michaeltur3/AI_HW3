@@ -24,4 +24,5 @@ def sfs(x, y, k, clf, score):
                 best_v = v
             V.remove(v)
         V.add(best_v)
+        N.remove(best_v)
     return list(V)
