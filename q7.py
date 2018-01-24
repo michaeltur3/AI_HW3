@@ -17,7 +17,7 @@ def getFeatureSubset(lst, V):
 
 def score_fun(clf, V, x, y):
     X = np.array(getFeatureSubset(x, V))
-    X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.25, random_state=0)
+    X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.25)
     clf.fit(X_train, y_train)
     y_predict = clf.predict(X_test)
     return accuracy_score(y_test, y_predict)
@@ -35,7 +35,7 @@ Y = np.array(y)
 
 classifier = KNeighborsClassifier(n_neighbors=5)
 # regular KNN
-X_train, X_test, y_train, y_test = train_test_split(X, Y, test_size=0.25, random_state=0)
+X_train, X_test, y_train, y_test = train_test_split(X, Y, test_size=0.25)
 classifier.fit(X_train, y_train)
 y_predict = classifier.predict(X_test)
 score = accuracy_score(y_test, y_predict)
