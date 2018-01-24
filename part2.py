@@ -53,12 +53,14 @@ y_predict = classifier.predict(X_test_subset)
 score = accuracy_score(y_test, y_predict)
 print(score)
 
+# no pruning
 classifier = tree.DecisionTreeClassifier(criterion="entropy")
 classifier = classifier.fit(X_train, y_train)
 y_predict = classifier.predict(X_test)
 score = accuracy_score(y_test, y_predict)
 print(score)
 
+# with pruning
 classifier = tree.DecisionTreeClassifier(criterion="entropy", min_samples_leaf=20)
 classifier = classifier.fit(X_train, y_train)
 y_predict = classifier.predict(X_test)
